@@ -302,204 +302,185 @@ export default function RegisterPage() {
           </div>
 
           {/* Form Card */}
-          <div className="bg-[#111]/90 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/10">
-            <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-[#32CD32]" />
-              <span className="text-[#32CD32] text-sm font-medium">
-                Get Started
-              </span>
-            </div>
-            <h1 className="text-3xl font-bold text-white mb-2">
-              Create Account
-            </h1>
-            <p className="text-gray-400 mb-8">
-              Join thousands of happy students
-            </p>
+          <div className="relative bg-[#111]/90 backdrop-blur-2xl rounded-3xl p-8 lg:p-10  border-white/10
+  shadow-[0_20px_60px_rgba(0,0,0,0.55)]">
 
-            {error && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
-                {error}
-              </div>
-            )}
+  {/* Header */}
+  <div className="mb-8">
+    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#32CD32]/10 mb-3">
+      <Sparkles className="w-4 h-4 text-[#32CD32]" />
+      <span className="text-[#32CD32] text-xs font-semibold tracking-wide">
+        GET STARTED
+      </span>
+    </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 p-1">
-              {/* Name Input */}
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Full Name
-                </label>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl flex items-center justify-center shrink-0">
-                    <User className="w-5 h-5 text-[#32CD32]" />
-                  </div>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter your full name"
-                    required
-                    className="flex-1 px-4 py-5 bg-[#0A0A0A] border-2 border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#32CD32] focus:ring-4 focus:ring-[#32CD32]/20 transition-all"
-                  />
-                </div>
-              </div>
+    <h1 className="text-3xl font-extrabold text-white tracking-tight">
+      Create Account
+    </h1>
+    <p className="text-gray-400 mt-2">
+      Join thousands of happy students
+    </p>
+  </div>
 
-              {/* Email Input */}
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Email Address
-                </label>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-[#32CD32]" />
-                  </div>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@university.edu"
-                    required
-                    className="flex-1 px-4 py-5 bg-[#0A0A0A] border-2 border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#32CD32] focus:ring-4 focus:ring-[#32CD32]/20 transition-all"
-                  />
-                </div>
-              </div>
+  {/* Error */}
+  {error && (
+    <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+      {error}
+    </div>
+  )}
 
-              {/* Password Input */}
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Password
-                </label>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl flex items-center justify-center shrink-0">
-                    <Lock className="w-5 h-5 text-[#32CD32]" />
-                  </div>
-                  <div className="flex-1 relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Create a strong password"
-                      required
-                      className="w-full px-4 py-5 pr-12 bg-[#0A0A0A] border-2 border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#32CD32] focus:ring-4 focus:ring-[#32CD32]/20 transition-all"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-gray-500 hover:text-white transition-colors"
-                    >
-                      {showPassword ? (
-                        <EyeOff className="w-5 h-5" />
-                      ) : (
-                        <Eye className="w-5 h-5" />
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </div>
+  <form onSubmit={handleSubmit} className="space-y-6">
 
-              {/* Confirm Password Input */}
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Confirm Password
-                </label>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl flex items-center justify-center shrink-0">
-                    <Lock className="w-5 h-5 text-[#32CD32]" />
-                  </div>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="Confirm your password"
-                    required
-                    className="flex-1 px-4 py-5 bg-[#0A0A0A] border-2 border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#32CD32] focus:ring-4 focus:ring-[#32CD32]/20 transition-all"
-                  />
-                </div>
-              </div>
+    {/* Input Group */}
+    {[
+      { label: "Full Name", icon: User, value: name, set: setName, placeholder: "John Doe", type: "text" },
+      { label: "Email Address", icon: Mail, value: email, set: setEmail, placeholder: "you@university.edu", type: "email" },
+    ].map(({ label, icon: Icon, value, set, placeholder, type }, i) => (
+      <div key={i} className="space-y-2">
+        <label className="text-sm font-medium text-gray-300">
+          {label}
+        </label>
 
-              {/* Password Requirements */}
-              <div className="flex flex-wrap justify-center gap-2 mb-6">
-                {passwordRequirements.map((req, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${
-                      req.met
-                        ? "bg-[#32CD32]/20 text-[#32CD32] border border-[#32CD32]/30"
-                        : "bg-white/5 text-gray-500 border border-white/10"
-                    }`}
-                  >
-                    <Check
-                      className={`w-3.5 h-3.5 ${req.met ? "" : "opacity-30"}`}
-                    />
-                    {req.text}
-                  </div>
-                ))}
-              </div>
-
-              {/* Terms Checkbox */}
-              <label className="flex items-start gap-4 cursor-pointer mt-4 pt-4 border-t border-white/5">
-                <div className="relative mt-0.5">
-                  <input
-                    type="checkbox"
-                    checked={agreedToTerms}
-                    onChange={(e) => setAgreedToTerms(e.target.checked)}
-                    className="sr-only peer"
-                  />
-                  <div
-                    className="w-6 h-6 bg-[#0A0A0A] border-2 border-white/20 rounded-lg peer-checked:bg-[#32CD32] peer-checked:border-[#32CD32] 
-                    transition-all flex items-center justify-center"
-                  >
-                    {agreedToTerms && (
-                      <Check className="w-4 h-4 text-[#0A0A0A]" />
-                    )}
-                  </div>
-                </div>
-                <span className="text-sm text-gray-400 leading-relaxed">
-                  I agree to the{" "}
-                  <Link
-                    href="/terms"
-                    className="text-[#32CD32] hover:underline"
-                  >
-                    Terms of Service
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="/privacy"
-                    className="text-[#32CD32] hover:underline"
-                  >
-                    Privacy Policy
-                  </Link>
-                </span>
-              </label>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full py-4 mt-2 bg-gradient-to-r from-[#32CD32] to-[#228B22] text-white font-semibold text-lg rounded-xl 
-                  flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-[#32CD32]/30 hover:scale-[1.02] 
-                  disabled:opacity-50 disabled:hover:scale-100 transition-all duration-300"
-              >
-                {isLoading ? (
-                  <Loader2 className="w-6 h-6 animate-spin" />
-                ) : (
-                  <>
-                    Create Account <ArrowRight className="w-5 h-5" />
-                  </>
-                )}
-              </button>
-            </form>
-
-            {/* Sign In Link */}
-            <p className="mt-8 text-center text-gray-400">
-              Already have an account?{" "}
-              <Link
-                href="/"
-                className="text-[#32CD32] font-semibold hover:underline"
-              >
-                Sign in
-              </Link>
-            </p>
+        <div className="flex items-center gap-3">
+          <div className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
+            flex items-center justify-center shrink-0">
+            <Icon className="w-5 h-5 text-[#32CD32]" />
           </div>
+
+          <input
+            type={type}
+            value={value}
+            onChange={(e) => set(e.target.value)}
+            placeholder={placeholder}
+            required
+            className="flex-1 h-14 px-4 bg-[#0A0A0A] border border-white/10 rounded-xl
+              text-white placeholder:text-gray-500
+              focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
+              transition"
+          />
+        </div>
+      </div>
+    ))}
+
+    {/* Password */}
+    <div className="space-y-2">
+      <label className="text-sm font-medium text-gray-300">Password</label>
+      <div className="flex items-center gap-3">
+        <div className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
+          flex items-center justify-center shrink-0">
+          <Lock className="w-5 h-5 text-[#32CD32]" />
+        </div>
+
+        <div className="relative flex-1">
+          <input
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Create a strong password"
+            required
+            className="w-full h-14 px-4 pr-12 bg-[#0A0A0A] border border-white/10 rounded-xl
+              text-white placeholder:text-gray-500
+              focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
+              transition"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition"
+          >
+            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {/* Confirm Password */}
+    <div className="space-y-2">
+      <label className="text-sm font-medium text-gray-300">
+        Confirm Password
+      </label>
+      <div className="flex items-center gap-3">
+        <div className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
+          flex items-center justify-center shrink-0">
+          <Lock className="w-5 h-5 text-[#32CD32]" />
+        </div>
+
+        <input
+          type={showPassword ? "text" : "password"}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Re-enter password"
+          required
+          className="flex-1 h-14 px-4 bg-[#0A0A0A] border border-white/10 rounded-xl
+            text-white placeholder:text-gray-500
+            focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
+            transition"
+        />
+      </div>
+    </div>
+
+    {/* Password Requirements */}
+    <div className="flex flex-wrap gap-2 pt-2">
+      {passwordRequirements.map((req, index) => (
+        <span
+          key={index}
+          className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium
+            ${
+              req.met
+                ? "bg-[#32CD32]/20 text-[#32CD32] border border-[#32CD32]/30"
+                : "bg-white/5 text-gray-500 border border-white/10"
+            }`}
+        >
+          <Check className={`w-3.5 h-3.5 ${req.met ? "" : "opacity-30"}`} />
+          {req.text}
+        </span>
+      ))}
+    </div>
+
+    {/* Terms */}
+    <label className="flex items-start gap-4 pt-4 mt-4 border-t border-white/5 cursor-pointer">
+      <input type="checkbox" className="accent-[#32CD32] mt-1" required />
+      <span className="text-sm text-gray-400 leading-relaxed">
+        I agree to the{" "}
+        <Link href="/terms" className="text-[#32CD32] hover:underline">
+          Terms of Service
+        </Link>{" "}
+        and{" "}
+        <Link href="/privacy" className="text-[#32CD32] hover:underline">
+          Privacy Policy
+        </Link>
+      </span>
+    </label>
+
+    {/* Submit */}
+    <button
+      type="submit"
+      disabled={isLoading}
+      className="w-full h-14 bg-[#32CD32] text-black font-extrabold text-lg rounded-xl
+        flex items-center justify-center gap-2
+        hover:shadow-[0_0_40px_rgba(50,205,50,0.45)] hover:scale-[1.02]
+        disabled:opacity-50 transition-all"
+    >
+      {isLoading ? (
+        <Loader2 className="w-6 h-6 animate-spin" />
+      ) : (
+        <>
+          Create Account
+          <ArrowRight className="w-5 h-5" />
+        </>
+      )}
+    </button>
+  </form>
+
+  {/* Footer */}
+  <p className="mt-8 text-center text-sm text-gray-400">
+    Already have an account?{" "}
+    <Link href="/" className="text-[#32CD32] font-semibold hover:underline">
+      Sign in
+    </Link>
+  </p>
+</div>
+
         </div>
       </div>
     </div>
