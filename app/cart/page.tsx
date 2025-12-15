@@ -1,5 +1,8 @@
 "use client";
 
+// Prevent static prerendering - this page uses CartContext
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import Link from "next/link";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";

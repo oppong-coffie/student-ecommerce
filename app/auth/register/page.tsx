@@ -1,5 +1,8 @@
 "use client";
 
+// Prevent static prerendering - this page uses AuthContext
+export const dynamic = "force-dynamic";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import {

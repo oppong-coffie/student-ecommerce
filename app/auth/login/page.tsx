@@ -1,5 +1,8 @@
 "use client";
 
+// Prevent static prerendering - this page uses AuthContext which requires client-side rendering
+export const dynamic = "force-dynamic";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import { Eye, EyeOff, Mail, Lock, ArrowRight, Loader2 } from "lucide-react";
