@@ -1,0 +1,51 @@
+# =====================================================
+# STUDENT E-COMMERCE ENVIRONMENT CONFIGURATION
+# =====================================================
+# 
+# INSTRUCTIONS:
+# 1. Rename this file to `.env.local`
+# 2. Fill in your actual values below
+# 3. Restart the dev server after making changes
+#
+# =====================================================
+
+# MongoDB Connection
+# ------------------
+# For local development: mongodb://localhost:27017/student-ecommerce
+# For MongoDB Atlas: mongodb+srv://<username>:<password>@cluster.mongodb.net/student-ecommerce
+MONGODB_URI=mongodb://localhost:27017/student-ecommerce
+
+# NextAuth Configuration
+# ----------------------
+# NEXTAUTH_URL should match your app URL
+# NEXTAUTH_SECRET should be a secure random string (generate with: openssl rand -base64 32)
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-nextauth-secret-key-change-in-production
+
+# JWT Secret
+# ----------
+# Used for custom JWT tokens (generate with: openssl rand -base64 32)
+JWT_SECRET=your-jwt-secret-key-change-in-production
+
+# Paystack Payment Gateway
+# ------------------------
+# Get your keys from: https://dashboard.paystack.com/settings/developer
+# Use test keys for development, live keys for production
+PAYSTACK_PUBLIC_KEY=pk_test_your-paystack-public-key
+PAYSTACK_SECRET_KEY=sk_test_your-paystack-secret-key
+
+# Email/SMTP Configuration
+# ------------------------
+# For Gmail: Enable 2FA and create an App Password
+# SMTP_HOST: smtp.gmail.com (Gmail) or your SMTP provider
+# SMTP_PORT: 587 (TLS) or 465 (SSL)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+EMAIL_FROM=noreply@studentshop.com
+
+# App Configuration
+# -----------------
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_NAME=StudentShop
