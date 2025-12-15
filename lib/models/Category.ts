@@ -1,6 +1,6 @@
-import mongoose, { Schema, Document, Model, CallbackWithoutResultAndOptionalError } from 'mongoose';
+import mongoose, { Schema, Document, Model, HydratedDocument } from 'mongoose';
 
-export interface ICategory extends Document {
+export interface ICategory {
   _id: mongoose.Types.ObjectId;
   name: string;
   slug: string;
@@ -13,7 +13,7 @@ export interface ICategory extends Document {
   updatedAt: Date;
 }
 
-const CategorySchema = new Schema<ICategory>(
+const CategorySchema = new Schema<ICategory, Model<ICategory>>(
   {
     name: {
       type: String,
@@ -55,7 +55,7 @@ const CategorySchema = new Schema<ICategory>(
 );
 
 // Create slug from name before saving
-CategorySchema.pre('save', function (next: CallbackWithoutResultAndOptionalError) {
+CategorySchema.pre('save', function (this: HydratedDocument<ICategory>, next) {
   if (this.isModified('name') && !this.slug) {
     this.slug = this.name
       .toLowerCase()
