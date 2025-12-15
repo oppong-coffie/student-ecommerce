@@ -55,14 +55,13 @@ const CategorySchema = new Schema<ICategory, Model<ICategory>>(
 );
 
 // Create slug from name before saving
-CategorySchema.pre('save', function (this: HydratedDocument<ICategory>, next) {
+CategorySchema.pre('save', async function () {
   if (this.isModified('name') && !this.slug) {
     this.slug = this.name
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
   }
-  next();
 });
 
 // Virtual for subcategories
