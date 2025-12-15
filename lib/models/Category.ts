@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Model } from 'mongoose';
+import mongoose, { Schema, Document, Model, CallbackWithoutResultAndOptionalError } from 'mongoose';
 
 export interface ICategory extends Document {
   _id: mongoose.Types.ObjectId;
@@ -55,7 +55,7 @@ const CategorySchema = new Schema<ICategory>(
 );
 
 // Create slug from name before saving
-CategorySchema.pre('save', function (next) {
+CategorySchema.pre('save', function (next: CallbackWithoutResultAndOptionalError) {
   if (this.isModified('name') && !this.slug) {
     this.slug = this.name
       .toLowerCase()
