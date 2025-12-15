@@ -24,6 +24,7 @@ export default function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const { register } = useAuth();
   const router = useRouter();
 
@@ -42,6 +43,11 @@ export default function RegisterForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    if (!termsAccepted) {
+      setError("Please accept the Terms of Service and Privacy Policy");
+      return;
+    }
 
     if (!isPasswordValid) {
       setError("Please meet all password requirements");
@@ -223,7 +229,8 @@ export default function RegisterForm() {
               <input
                 type="checkbox"
                 id="terms"
-                required
+                checked={termsAccepted}
+                onChange={(e) => setTermsAccepted(e.target.checked)}
                 className="w-4 h-4 mt-0.5 rounded border-gray-300 text-[#E8FF00] focus:ring-[#E8FF00]"
               />
               <label

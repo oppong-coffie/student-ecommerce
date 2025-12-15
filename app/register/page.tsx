@@ -302,185 +302,228 @@ export default function RegisterPage() {
           </div>
 
           {/* Form Card */}
-          <div className="relative bg-[#111]/90 backdrop-blur-2xl rounded-3xl p-8 lg:p-10  border-white/10
-  shadow-[0_20px_60px_rgba(0,0,0,0.55)]">
-
-  {/* Header */}
-  <div className="mb-8">
-    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#32CD32]/10 mb-3">
-      <Sparkles className="w-4 h-4 text-[#32CD32]" />
-      <span className="text-[#32CD32] text-xs font-semibold tracking-wide">
-        GET STARTED
-      </span>
-    </div>
-
-    <h1 className="text-3xl font-extrabold text-white tracking-tight">
-      Create Account
-    </h1>
-    <p className="text-gray-400 mt-2">
-      Join thousands of happy students
-    </p>
-  </div>
-
-  {/* Error */}
-  {error && (
-    <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
-      {error}
-    </div>
-  )}
-
-  <form onSubmit={handleSubmit} className="space-y-6">
-
-    {/* Input Group */}
-    {[
-      { label: "Full Name", icon: User, value: name, set: setName, placeholder: "John Doe", type: "text" },
-      { label: "Email Address", icon: Mail, value: email, set: setEmail, placeholder: "you@university.edu", type: "email" },
-    ].map(({ label, icon: Icon, value, set, placeholder, type }, i) => (
-      <div key={i} className="space-y-2">
-        <label className="text-sm font-medium text-gray-300">
-          {label}
-        </label>
-
-        <div className="flex items-center gap-3">
-          <div className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
-            flex items-center justify-center shrink-0">
-            <Icon className="w-5 h-5 text-[#32CD32]" />
-          </div>
-
-          <input
-            type={type}
-            value={value}
-            onChange={(e) => set(e.target.value)}
-            placeholder={placeholder}
-            required
-            className="flex-1 h-14 px-4 bg-[#0A0A0A] border border-white/10 rounded-xl
-              text-white placeholder:text-gray-500
-              focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
-              transition"
-          />
-        </div>
-      </div>
-    ))}
-
-    {/* Password */}
-    <div className="space-y-2">
-      <label className="text-sm font-medium text-gray-300">Password</label>
-      <div className="flex items-center gap-3">
-        <div className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
-          flex items-center justify-center shrink-0">
-          <Lock className="w-5 h-5 text-[#32CD32]" />
-        </div>
-
-        <div className="relative flex-1">
-          <input
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Create a strong password"
-            required
-            className="w-full h-14 px-4 pr-12 bg-[#0A0A0A] border border-white/10 rounded-xl
-              text-white placeholder:text-gray-500
-              focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
-              transition"
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition"
+          <div
+            className="relative bg-[#111]/90 backdrop-blur-2xl rounded-3xl p-8 lg:p-10  border-white/10
+  shadow-[0_20px_60px_rgba(0,0,0,0.55)]"
           >
-            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
-    </div>
+            {/* Header */}
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#32CD32]/10 mb-3">
+                <Sparkles className="w-4 h-4 text-[#32CD32]" />
+                <span className="text-[#32CD32] text-xs font-semibold tracking-wide">
+                  GET STARTED
+                </span>
+              </div>
 
-    {/* Confirm Password */}
-    <div className="space-y-2">
-      <label className="text-sm font-medium text-gray-300">
-        Confirm Password
-      </label>
-      <div className="flex items-center gap-3">
-        <div className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
-          flex items-center justify-center shrink-0">
-          <Lock className="w-5 h-5 text-[#32CD32]" />
-        </div>
+              <h1 className="text-3xl font-extrabold text-white tracking-tight">
+                Create Account
+              </h1>
+              <p className="text-gray-400 mt-2">
+                Join thousands of happy students
+              </p>
+            </div>
 
-        <input
-          type={showPassword ? "text" : "password"}
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Re-enter password"
-          required
-          className="flex-1 h-14 px-4 bg-[#0A0A0A] border border-white/10 rounded-xl
+            {/* Error */}
+            {error && (
+              <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Input Group */}
+              {[
+                {
+                  label: "Full Name",
+                  icon: User,
+                  value: name,
+                  set: setName,
+                  placeholder: "John Doe",
+                  type: "text",
+                },
+                {
+                  label: "Email Address",
+                  icon: Mail,
+                  value: email,
+                  set: setEmail,
+                  placeholder: "you@university.edu",
+                  type: "email",
+                },
+              ].map(
+                ({ label, icon: Icon, value, set, placeholder, type }, i) => (
+                  <div key={i} className="space-y-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      {label}
+                    </label>
+
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
+            flex items-center justify-center shrink-0"
+                      >
+                        <Icon className="w-5 h-5 text-[#32CD32]" />
+                      </div>
+
+                      <input
+                        type={type}
+                        value={value}
+                        onChange={(e) => set(e.target.value)}
+                        placeholder={placeholder}
+                        required
+                        className="flex-1 h-14 px-4 bg-[#0A0A0A] border border-white/10 rounded-xl
+              text-white placeholder:text-gray-500
+              focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
+              transition"
+                      />
+                    </div>
+                  </div>
+                )
+              )}
+
+              {/* Password */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  Password
+                </label>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
+          flex items-center justify-center shrink-0"
+                  >
+                    <Lock className="w-5 h-5 text-[#32CD32]" />
+                  </div>
+
+                  <div className="relative flex-1">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Create a strong password"
+                      required
+                      className="w-full h-14 px-4 pr-12 bg-[#0A0A0A] border border-white/10 rounded-xl
+              text-white placeholder:text-gray-500
+              focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
+              transition"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Confirm Password */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  Confirm Password
+                </label>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-14 h-14 bg-[#32CD32]/10 border border-[#32CD32]/20 rounded-xl
+          flex items-center justify-center shrink-0"
+                  >
+                    <Lock className="w-5 h-5 text-[#32CD32]" />
+                  </div>
+
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Re-enter password"
+                    required
+                    className="flex-1 h-14 px-4 bg-[#0A0A0A] border border-white/10 rounded-xl
             text-white placeholder:text-gray-500
             focus:outline-none focus:ring-2 focus:ring-[#32CD32]/40 focus:border-transparent
             transition"
-        />
-      </div>
-    </div>
+                  />
+                </div>
+              </div>
 
-    {/* Password Requirements */}
-    <div className="flex flex-wrap gap-2 pt-2">
-      {passwordRequirements.map((req, index) => (
-        <span
-          key={index}
-          className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium
+              {/* Password Requirements */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {passwordRequirements.map((req, index) => (
+                  <span
+                    key={index}
+                    className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium
             ${
               req.met
                 ? "bg-[#32CD32]/20 text-[#32CD32] border border-[#32CD32]/30"
                 : "bg-white/5 text-gray-500 border border-white/10"
             }`}
-        >
-          <Check className={`w-3.5 h-3.5 ${req.met ? "" : "opacity-30"}`} />
-          {req.text}
-        </span>
-      ))}
-    </div>
+                  >
+                    <Check
+                      className={`w-3.5 h-3.5 ${req.met ? "" : "opacity-30"}`}
+                    />
+                    {req.text}
+                  </span>
+                ))}
+              </div>
 
-    {/* Terms */}
-    <label className="flex items-start gap-4 pt-4 mt-4 border-t border-white/5 cursor-pointer">
-      <input type="checkbox" className="accent-[#32CD32] mt-1" required />
-      <span className="text-sm text-gray-400 leading-relaxed">
-        I agree to the{" "}
-        <Link href="/terms" className="text-[#32CD32] hover:underline">
-          Terms of Service
-        </Link>{" "}
-        and{" "}
-        <Link href="/privacy" className="text-[#32CD32] hover:underline">
-          Privacy Policy
-        </Link>
-      </span>
-    </label>
+              {/* Terms */}
+              <label className="flex items-start gap-4 pt-4 mt-4 border-t border-white/5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  className="accent-[#32CD32] mt-1"
+                  checked={agreedToTerms}
+                  onChange={(e) => setAgreedToTerms(e.target.checked)}
+                />
+                <span className="text-sm text-gray-400 leading-relaxed">
+                  I agree to the{" "}
+                  <Link
+                    href="/terms"
+                    className="text-[#32CD32] hover:underline"
+                  >
+                    Terms of Service
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    href="/privacy"
+                    className="text-[#32CD32] hover:underline"
+                  >
+                    Privacy Policy
+                  </Link>
+                </span>
+              </label>
 
-    {/* Submit */}
-    <button
-      type="submit"
-      disabled={isLoading}
-      className="w-full h-14 bg-[#32CD32] text-black font-extrabold text-lg rounded-xl
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full h-14 bg-[#32CD32] text-black font-extrabold text-lg rounded-xl
         flex items-center justify-center gap-2
         hover:shadow-[0_0_40px_rgba(50,205,50,0.45)] hover:scale-[1.02]
         disabled:opacity-50 transition-all"
-    >
-      {isLoading ? (
-        <Loader2 className="w-6 h-6 animate-spin" />
-      ) : (
-        <>
-          Create Account
-          <ArrowRight className="w-5 h-5" />
-        </>
-      )}
-    </button>
-  </form>
+              >
+                {isLoading ? (
+                  <Loader2 className="w-6 h-6 animate-spin" />
+                ) : (
+                  <>
+                    Create Account
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
+              </button>
+            </form>
 
-  {/* Footer */}
-  <p className="mt-8 text-center text-sm text-gray-400">
-    Already have an account?{" "}
-    <Link href="/" className="text-[#32CD32] font-semibold hover:underline">
-      Sign in
-    </Link>
-  </p>
-</div>
-
+            {/* Footer */}
+            <p className="mt-8 text-center text-sm text-gray-400">
+              Already have an account?{" "}
+              <Link
+                href="/"
+                className="text-[#32CD32] font-semibold hover:underline"
+              >
+                Sign in
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

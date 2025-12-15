@@ -42,9 +42,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [pending2FAEmail, setPending2FAEmail] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   // Check auth status on mount
   useEffect(() => {
+    setMounted(true);
     checkAuth();
   }, []);
 
@@ -99,7 +101,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const data = await response.json();
 
       if (!response.ok) {
-        return { success: false, error: data.message || "Registration failed" };
+        return {
+          success: false,
+          error: data.error || data.message || "Registration failed",
+        };
       }
 
       return { success: true };
