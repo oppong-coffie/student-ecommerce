@@ -179,7 +179,7 @@ const OrderSchema = new Schema<IOrder>(
 );
 
 // Generate order number before saving
-OrderSchema.pre('save', async function (next) {
+OrderSchema.pre('save', async function () {
   if (!this.orderNumber) {
     const date = new Date();
     const prefix = `ORD${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}`;
@@ -199,8 +199,6 @@ OrderSchema.pre('save', async function (next) {
       timestamp: new Date(),
     });
   }
-  
-  next();
 });
 
 // Index for queries

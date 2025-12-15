@@ -146,7 +146,7 @@ const ProductSchema = new Schema<IProduct>(
 );
 
 // Create slug from name before saving
-ProductSchema.pre('save', function (next) {
+ProductSchema.pre('save', async function () {
   if (this.isModified('name') && !this.slug) {
     this.slug = this.name
       .toLowerCase()
@@ -158,8 +158,6 @@ ProductSchema.pre('save', function (next) {
   if (this.images.length > 0 && !this.thumbnail) {
     this.thumbnail = this.images[0];
   }
-  
-  next();
 });
 
 // Index for search
